@@ -9,6 +9,10 @@ function placeMarker(position, marker) {
 
     gameboard[position] = marker;
     console.log(gameboard);
+
+    if (checkWin(marker)) {
+        console.log(`Player ${marker} WINS!`);
+    }
 }
 
 // Declare an array with the possible winning combinations
