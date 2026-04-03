@@ -10,9 +10,10 @@ function placeMarker(position, marker) {
     gameboard[position] = marker;
     console.log(gameboard);
 
-    // If a winning condition is met announce the winner
+    // If a winning condition is met announce the winner and restart the gameboard
     if (checkWin(marker)) {
         console.log(`Player ${marker} WINS!`);
+        restartGameboard();
     }
 }
 
@@ -37,6 +38,7 @@ function checkWin(playerMarker) {
     });
 }
 
+// Function that restarts the gameboard to it's initial state
 function restartGameboard() {
     gameboard = Array(9).fill(null);
     console.log("Restarting the board");
