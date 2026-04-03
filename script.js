@@ -1,5 +1,5 @@
 // Simplified board using only an array with the 9 positions of the 3x3 board
-const gameboard = Array(9).fill(null);
+let gameboard = Array(9).fill(null);
 console.log(gameboard);
 
 // Function to place the markers in the gameboard array
@@ -10,6 +10,7 @@ function placeMarker(position, marker) {
     gameboard[position] = marker;
     console.log(gameboard);
 
+    // If a winning condition is met announce the winner
     if (checkWin(marker)) {
         console.log(`Player ${marker} WINS!`);
     }
@@ -34,4 +35,10 @@ function checkWin(playerMarker) {
         // Return true if every index of the combination matches the player marker
         return combination.every(index => gameboard[index] === playerMarker);
     });
+}
+
+function restartGameboard() {
+    gameboard = Array(9).fill(null);
+    console.log("Restarting the board");
+    console.log(gameboard);
 }
