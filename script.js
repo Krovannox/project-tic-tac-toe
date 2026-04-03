@@ -1,13 +1,13 @@
 /* Create a 3x3 Array */
 function createGameboard() {
-    /* Create an empty array */
-    const gameboard = [];
+    /* Create an empty object */
+    const gameboard = {};
 
-    /* Create the rows and columns of the board */
+    /* Define the number of rows and columns for the board */
     const rows = 3;
     const columns = 3;
 
-    /* Create an array of arrays using a nested for loop */
+    /* Create the arrays using a nested for loop */
     for (let i = 0; i < rows; i++) {
         gameboard[i] = [];
 
