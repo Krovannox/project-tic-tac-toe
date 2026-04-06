@@ -1,7 +1,39 @@
 function gameControl() {
+    
+    // ----- VARIABLES ----- //
     // Simplified board using only an array with the 9 positions of the 3x3 board
     let gameboard = Array(9).fill(null);
     console.log(gameboard);
+
+    // Declare an array with the possible winning combinations
+    const winningCombinations = [
+        [0, 1, 2], // First row
+        [3, 4, 5], // Second row
+        [6, 7, 8], // Third row
+        [0, 3, 6], // First column
+        [1, 4, 7], // Second column
+        [2, 5, 8], // Third column
+        [0, 3, 8], // First diagonal
+        [2, 4, 6], // Second diagonal
+    ];
+    // --------------------- //
+
+    // Function that creates a player
+    function createPlayer(name, marker) {
+        let playerScore = 0;
+        let playerName = name;
+        let playerMarker = marker;
+
+        function addPoint() {
+            return playerScore += 1;
+        }
+
+        function getScore() {
+            return playerScore;
+        }
+
+        return { playerName, playerMarker, playerScore, addPoint, getScore };
+    }
 
     // Function to place the markers in the gameboard array
     function placeMarker(position, marker) {
@@ -17,18 +49,6 @@ function gameControl() {
             restartGameboard();
         }
     }
-
-    // Declare an array with the possible winning combinations
-    const winningCombinations = [
-        [0, 1, 2], // First row
-        [3, 4, 5], // Second row
-        [6, 7, 8], // Third row
-        [0, 3, 6], // First column
-        [1, 4, 7], // Second column
-        [2, 5, 8], // Third column
-        [0, 3, 8], // First diagonal
-        [2, 4, 6], // Second diagonal
-    ];
 
     // Function that checks if a winning combinations is true, taking the player marker into account
     function checkWin(playerMarker) {
@@ -46,7 +66,13 @@ function gameControl() {
         console.log(gameboard);
     }
 
-    return { placeMarker };
+    return { createPlayer, placeMarker };
 }
 
 const game = gameControl();
+
+const player1 = game.createPlayer("John", "X");
+const player2 = game.createPlayer("Jane", "O");
+
+console.log(player1);
+console.log(player2);
